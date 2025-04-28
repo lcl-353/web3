@@ -1,3 +1,4 @@
+# before exec this program, exec command "pip install pycryptodome"
 import time
 import hashlib
 
