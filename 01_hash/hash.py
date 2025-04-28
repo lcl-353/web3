@@ -18,10 +18,11 @@ def proof_of_work(data, difficulty=4):
 
 if __name__ == "__main__":
     data = "NULL"
-    difficulty = 5  # 前4位0
+    difficulty = 5# 前4位0
     nonce, hash_result, elapsed_time = proof_of_work(data, difficulty)
     
-    print(f"找到符合要求的 Nonce：{nonce}")
-    print(f"对应的哈希值：{hash_result}")
-    print(f"耗时：{elapsed_time:.4f} 秒")
+    print(f"match Nonce：{nonce}")
+    print(f"hash data：{data}")
+    print(f"hash value：{hash_result}")
+    print(f"time cost：{elapsed_time:.4f} s")
 
