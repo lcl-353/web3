@@ -59,7 +59,7 @@ contract Bank {
         }
     }
 
-    // bubble sort top3
+    // select sort top3
     function sortTopDepositors() internal {
         for (uint256 i = 0; i < 2; i++) {
             for (uint256 j = i + 1; j < 3; j++) {
