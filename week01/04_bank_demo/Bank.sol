@@ -10,12 +10,7 @@ contract Bank {
     mapping (address => uint256) balances;
     address admin;
 
-    struct TopDepositor {
-        address user;
-        uint256 amount;
-    }
-
-    TopDepositor[3] public topDepositors;
+    address[3] public topDepositors;
 
     constructor() {
         admin = msg.sender;
@@ -38,42 +33,42 @@ contract Bank {
 
     // array save top 3 depositors
     function updateTopDepositors(address depositor) internal {
-        uint256 userBalance = balances[depositor];
 
-        // check whether in list
-        for (uint256 i = 0; i < 3; i++) {
-            if (topDepositors[i].user == depositor) {
-                topDepositors[i].amount = userBalance;
+        // 若用户已在榜单中，无需扩容，仅重新排序
+        for (uint i = 0; i < 3; i++) {
+            if (topDepositors[i] == depositor) {
                 sortTopDepositors();
                 return;
             }
         }
-
-        // if not in list, check whether let it in
-        for (uint256 i = 0; i < 3; i++) {
-            if (userBalance > topDepositors[i].amount) {
-                topDepositors[2] = TopDepositor(depositor, userBalance);
-                sortTopDepositors();
-                break;
-            }
+        // 若未在榜单且其余额超过当前第 3 名，则替换并排序
+        if (balances[depositor] > balances[topDepositors[2]]) {
+            topDepositors[2] = depositor;
+            sortTopDepositors();
         }
     }
 
-    // select sort top3
+    // bubble sort top3
     function sortTopDepositors() internal {
-        for (uint256 i = 0; i < 2; i++) {
-            for (uint256 j = i + 1; j < 3; j++) {
-                if (topDepositors[j].amount > topDepositors[i].amount) {
-                    TopDepositor memory temp = topDepositors[i];
-                    topDepositors[i] = topDepositors[j];
-                    topDepositors[j] = temp;
+
+        uint len = topDepositors.length;               // 固定长度为 3
+        bool swapped;
+        // 外层循环 O(n)
+        for (uint i = 0; i < len - 1; i++) {           // 冒泡排序外层循环
+            swapped = false;
+            // 内层循环 O(n-i-1)
+            for (uint j = 0; j < len - i - 1; j++) {
+                // 比较相邻两位的存款余额，较大者前置
+                if (balances[topDepositors[j]] < balances[topDepositors[j + 1]]) {
+                    // 原地交换地址，无需临时结构体
+                    (topDepositors[j], topDepositors[j + 1]) = 
+                        (topDepositors[j + 1], topDepositors[j]);          // tuple 赋值交换
+                    swapped = true;
                 }
             }
+            if (!swapped) {
+                break;  // 若一轮无交换，说明已完成排序，提前退出
+            }
         }
     }
-        
-    // function deposit() external payable {
-    //     balances_[msg.sender] += msg.value;
-    // }
 }
-
