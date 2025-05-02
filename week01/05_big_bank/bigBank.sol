@@ -52,6 +52,8 @@ contract Admin {
     constructor() {
         owner = msg.sender;
     }
+
+    receive() external payable { }
     
     modifier onlyOwner {
          require (msg.sender == owner, "You don't have Admin permission"); 
