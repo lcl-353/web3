@@ -10,3 +10,6 @@
 [submodule "week02/04_Bank_Test/lib/forge-std"]
 	path = week02/04_Bank_Test/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "week02/05_NFT_Market_Test/lib/forge-std"]
+	path = week02/05_NFT_Market_Test/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
