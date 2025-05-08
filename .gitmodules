@@ -1,3 +1,12 @@
 [submodule "week02/S6/lib/forge-std"]
 	path = week02/S6/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "week02/03_Foundry_Use/ERC20/lib/forge-std"]
+	path = week02/03_Foundry_Use/ERC20/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "week02/03_Foundry_Use/ERC20/lib/openzeppelin-contracts"]
+	path = week02/03_Foundry_Use/ERC20/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "week02/04_Bank_Test/lib/forge-std"]
+	path = week02/04_Bank_Test/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
