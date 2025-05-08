@@ -1,0 +1,14 @@
+No files changed, compilation skipped
+
+Ran 8 tests for test/NFT_Market.t.sol:NFTMarketTest
+[PASS] testBuyFailInsufficientFunds() (gas: 106801)
+[PASS] testBuyFailNotListed() (gas: 23111)
+[PASS] testBuyFailSelfPurchase() (gas: 133824)
+[PASS] testBuySuccess() (gas: 168092)
+[PASS] testFuzzListingAndBuying(uint256) (runs: 257, μ: 216741, ~: 216819)
+[PASS] testListFailNotOwner() (gas: 27546)
+[PASS] testListSuccess() (gas: 105908)
+[PASS] testMarketDoesNotHoldTokens() (gas: 169468)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 97.56ms (97.35ms CPU time)
+
+Ran 1 test suite in 99.74ms (97.56ms CPU time): 8 tests passed, 0 failed, 0 skipped (8 total tests)
