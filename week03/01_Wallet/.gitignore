@@ -1,0 +1,13 @@
+# 示例：忽略目录
+node_modules/
+dist/
+.idea/
+logs/
+
+# 示例：忽略特定文件
+*.log
+.env
+*.tmp
+
+# 示例：忽略某类文件但保留部分
+!dist/index.html  # 不忽略 dist/index.html
