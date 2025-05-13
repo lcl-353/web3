@@ -1,0 +1,17 @@
+{
+  "name": "nft-market-monitor",
+  "version": "1.0.0",
+  "description": "Monitor events from NFT market contract",
+  "type": "module",
+  "main": "monitor_events.js",
+  "scripts": {
+    "start": "node monitor_events.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "viem": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 

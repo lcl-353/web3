@@ -16,3 +16,15 @@
 [submodule "week02/05_NFT_Market_Test/lib/openzeppelin-contracts"]
 	path = week02/05_NFT_Market_Test/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "week02/06_Bank_With_Frontend/lib/forge-std"]
+	path = week02/06_Bank_With_Frontend/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "week02/06_Bank_With_Frontend/lib/openzeppelin-contracts"]
+	path = week02/06_Bank_With_Frontend/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "week02/07_NFTMarket_With_Backend/lib/forge-std"]
+	path = week02/07_NFTMarket_With_Backend/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "week02/07_NFTMarket_With_Backend/lib/openzeppelin-contracts"]
+	path = week02/07_NFTMarket_With_Backend/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
