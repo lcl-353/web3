@@ -28,3 +28,9 @@
 [submodule "week02/07_NFTMarket_With_Backend/lib/openzeppelin-contracts"]
 	path = week02/07_NFTMarket_With_Backend/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "week03/02_multi_sig_wallet/lib/forge-std"]
+	path = week03/02_multi_sig_wallet/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "week04/01_Get_Private_Variable_By_Slot/lib/forge-std"]
+	path = week04/01_Get_Private_Variable_By_Slot/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
