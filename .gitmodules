@@ -40,3 +40,12 @@
 [submodule "week05/01_Vesting/lib/openzeppelin-contracts"]
 	path = week05/01_Vesting/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "week05/02Uniswap-v2-core/lib/forge-std"]
+	path = week05/02Uniswap-v2-core/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "week05/03Uniswap-v2-periphery/lib/forge-std"]
+	path = week05/03Uniswap-v2-periphery/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "week05/02Uniswap-v2-core/lib/ds-test"]
+	path = week05/02Uniswap-v2-core/lib/ds-test
+	url = https://github.com/dapphub/ds-test
