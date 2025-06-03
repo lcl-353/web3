@@ -1,12 +1,12 @@
-pragma solidity =0.6.6;
+pragma solidity 0.8.29;
 
 import '../libraries/SafeMath.sol';
 
 contract ERC20 {
     using SafeMath for uint;
 
-    string public constant name = 'Test Token';
-    string public constant symbol = 'TT';
+    string public name;
+    string public symbol;
     uint8 public constant decimals = 18;
     uint  public totalSupply;
     mapping(address => uint) public balanceOf;
@@ -20,7 +20,10 @@ contract ERC20 {
     event Approval(address indexed owner, address indexed spender, uint value);
     event Transfer(address indexed from, address indexed to, uint value);
 
-    constructor(uint _totalSupply) public {
+    constructor(string memory name, string memory symbol) {
+        name = name;
+        symbol = symbol;
+        uint _totalSupply = 1000000 * (10 ** uint(decimals)); // 1 million tokens with 18 decimals
         uint chainId;
         assembly {
             chainId := chainid()
@@ -71,7 +74,7 @@ contract ERC20 {
     }
 
     function transferFrom(address from, address to, uint value) external returns (bool) {
-        if (allowance[from][msg.sender] != uint(-1)) {
+        if (allowance[from][msg.sender] != type(uint).max) {
             allowance[from][msg.sender] = allowance[from][msg.sender].sub(value);
         }
         _transfer(from, to, value);

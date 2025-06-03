@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@uniswap/lib": "^4.0.1-alpha"
+    "@uniswap/lib": "^1.1.1"
   }
 }
