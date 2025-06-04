@@ -1,0 +1,28 @@
+No files changed, compilation skipped
+
+Ran 2 tests for test/FlashSwap.t.sol:FlashSwapTest
+[PASS] testCheckPrices() (gas: 40719)
+Logs:
+  Token A address: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Token B address: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Factory 1 address: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Factory 2 address: 0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9
+  WETH address: 0xc7183455a4C133Ae270771860664b6B7ec320bB1
+  Pool 1 - Price of A in terms of B: 500000000000000000
+  Pool 2 - Price of A in terms of B: 666666666666666666
+
+[PASS] testFlashSwap() (gas: 227467)
+Logs:
+  Token A address: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Token B address: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Factory 1 address: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Factory 2 address: 0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9
+  WETH address: 0xc7183455a4C133Ae270771860664b6B7ec320bB1
+  Initial balance A: 800000000000000000000000
+  Initial balance B: 650000000000000000000000
+  Final balance A: 800000326296605025312746
+  Final balance B: 650000000000000000000000
+
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 4.93ms (888.86µs CPU time)
+
+Ran 1 test suite in 6.91ms (4.93ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)
