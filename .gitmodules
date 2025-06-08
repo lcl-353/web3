@@ -52,3 +52,12 @@
 [submodule "week05/03Uniswap-v2-periphery/lib/openzeppelin-contracts"]
 	path = week05/03Uniswap-v2-periphery/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "week05/04SushiSwap_Masterchef/lib/forge-std"]
+	path = week05/04SushiSwap_Masterchef/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "week05/04SushiSwap_Masterchef/lib/BoringSolidity"]
+	path = week05/04SushiSwap_Masterchef/lib/BoringSolidity
+	url = https://github.com/boringcrypto/BoringSolidity
+[submodule "week05/06StakingPool/lib/forge-std"]
+	path = week05/06StakingPool/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
