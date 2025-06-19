@@ -19,7 +19,7 @@ contract TokenBankTest is Test {
 
     function setUp() public {
         token = new TestToken();
-        bank = new TokenBank(address(token));
+        bank = new TokenBank(address(token), address(0)); // 使用零地址让合约使用默认 Permit2 地址
         user = address(0x1234);
         token.transfer(user, 1000 ether);
         vm.prank(user);
@@ -42,11 +42,11 @@ contract TokenBankTest is Test {
 
     function testPermitDeposit() public {
         uint256 privateKey = 0x1234;
-        address user = vm.addr(privateKey);
+        address testUser = vm.addr(privateKey);
         
         uint256 amount = 300 ether;
         uint256 deadline = block.timestamp + 1 hours;
-        uint256 nonce = token.nonces(user);
+        uint256 nonce = token.nonces(testUser);
         
         // 使用代币合约的domainSeparator
         bytes32 domainSeparator = token.DOMAIN_SEPARATOR();
@@ -54,7 +54,7 @@ contract TokenBankTest is Test {
         // 构造permit的消息数据
         bytes32 permit = keccak256(abi.encode(
             keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)"),
-            user,
+            testUser,
             address(bank),
             amount,
             nonce,
@@ -73,14 +73,14 @@ contract TokenBankTest is Test {
         
         // 确保用户有足够的代币
         vm.prank(address(this));
-        token.transfer(user, amount);
+        token.transfer(testUser, amount);
         
         // 调用permitDeposit
-        vm.prank(user);
-        bank.permitDeposit(user, amount, deadline, v, r, s);
+        vm.prank(testUser);
+        bank.permitDeposit(testUser, amount, deadline, v, r, s);
         
         // 验证结果
-        assertEq(bank.balances(user), amount, "Deposit amount incorrect");
+        assertEq(bank.balances(testUser), amount, "Deposit amount incorrect");
         assertEq(token.balanceOf(address(bank)), amount, "Bank balance incorrect");
     }
 

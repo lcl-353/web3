@@ -14,8 +14,8 @@ contract DeployTokenBank is Script {
         TestToken token = new TestToken();
         console.log("Token deployed at:", address(token));
 
-        // Deploy the TokenBank contract with the token address
-        TokenBank bank = new TokenBank(address(token));
+        // Deploy the TokenBank contract with the token address and default Permit2
+        TokenBank bank = new TokenBank(address(token), address(0)); // 使用零地址让合约使用默认 Permit2 地址
         console.log("TokenBank deployed at:", address(bank));
 
         vm.stopBroadcast();
