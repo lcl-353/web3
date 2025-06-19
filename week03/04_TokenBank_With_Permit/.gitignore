@@ -1,0 +1,56 @@
+# Solidity/Foundry specific
+cache/
+out/
+broadcast/
+artifacts/
+forge-cache/
+lcov.info
+coverage/
+typechain/
+typechain-types/
+
+# Node/NPM/Yarn
+node_modules/
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Secret keys and environment variables
+.env
+.secret
+*.pem
+mnemonic.txt
+private-key
+privatekey.txt
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+.DS_Store
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Testing
+coverage/
+coverage.json
+
+# Misc
+.DS_Store
+Thumbs.db
+
+# Standard ignores
+lib/

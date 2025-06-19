@@ -1,0 +1,142 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: #61dafb;
+}
+
+.connect-button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.connect-button:hover {
+  background-color: #4fa8c7;
+}
+
+.bank-container {
+  background-color: #3a3f4a;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.account-info {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #4c5364;
+}
+
+.balances {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.balance-card {
+  background-color: #4c5364;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 45%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.balance-card h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #61dafb;
+}
+
+.balance-card p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.actions {
+  margin-top: 2rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-group button {
+  width: 20%;
+  padding: 12px 0;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-group button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.button-group button:first-child:hover {
+  background-color: #3e8e41;
+}
+
+.button-group button:second-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.button-group button:second-child:hover {
+  background-color: #3e8e41;
+}
+
+.button-group button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.button-group button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+.button-group button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+} 

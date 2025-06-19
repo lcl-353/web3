@@ -12,3 +12,11 @@ docs/
 
 # Dotenv file
 .env
+
+# Standard ignores
+node_modules/
+out/
+cache/
+lib/
+*.log
+.DS_Store

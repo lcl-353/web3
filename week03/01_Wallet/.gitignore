@@ -11,3 +11,9 @@ logs/
 
 # 示例：忽略某类文件但保留部分
 !dist/index.html  # 不忽略 dist/index.html
+
+# Standard ignores
+out/
+cache/
+lib/
+.DS_Store
