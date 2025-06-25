@@ -11,9 +11,9 @@ contract SimpleDAO is Ownable, ReentrancyGuard {
     SushiToken public immutable sushiToken;
     
     // Governance parameters
-    uint256 public constant VOTING_DELAY = 1 days;
-    uint256 public constant VOTING_PERIOD = 1 weeks;
-    uint256 public constant EXECUTION_DELAY = 2 days;
+    uint256 public constant VOTING_DELAY = 1 hours;
+    uint256 public constant VOTING_PERIOD = 1 hours;
+    uint256 public constant EXECUTION_DELAY = 1 hours;
     uint256 public constant PROPOSAL_THRESHOLD = 1000 * 10**18; // 1000 SUSHI
     uint256 public constant QUORUM_PERCENTAGE = 4; // 4% of total supply
 

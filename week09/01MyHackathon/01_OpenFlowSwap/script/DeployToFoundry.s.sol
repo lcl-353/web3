@@ -199,13 +199,15 @@ contract DeployToFoundry is Script {
         
         // 注意：MasterChef的所有权暂时保留给deployer，这样可以添加更多池子
         // 在生产环境中，应该将MasterChef的所有权转移给DAO
-        console.log("MasterChef owner:", masterChef.owner());
+        
         console.log("SushiToken owner:", sushiToken.owner());
         console.log("DAO owner:", dao.owner());
+        console.log("MasterChef before owner:", masterChef.owner());
         
         // 可选：将MasterChef所有权转移给DAO（在生产环境中推荐）
-        // masterChef.transferOwnership(address(dao));
-        // console.log("MasterChef ownership transferred to DAO");
+        masterChef.transferOwnership(address(dao));
+        console.log("MasterChef ownership transferred to DAO");
+        console.log("MasterChef after owner:", masterChef.owner());
     }
     
     function _deploymentSummary() internal view {
