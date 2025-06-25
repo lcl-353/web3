@@ -212,7 +212,10 @@ contract MasterChef is Ownable, ReentrancyGuard {
     }
 
     // Update sushi per block. Can only be called by the owner.
-    function updateSushiPerBlock(uint256 _sushiPerBlock) public onlyOwner {
+    function updateSushiPerBlock(uint256 _sushiPerBlock, bool _withUpdate) public onlyOwner {
+        if (_withUpdate) {
+            massUpdatePools();
+        }
         sushiPerBlock = _sushiPerBlock;
     }
 } 

@@ -286,7 +286,7 @@ contract AllFunctionsTest is Test {
 
     function testMasterChef_updateSushiPerBlock() public {
         vm.startPrank(address(this));
-        masterChef.updateSushiPerBlock(2e18);
+        masterChef.updateSushiPerBlock(2e18, true);
         assertEq(masterChef.sushiPerBlock(), 2e18);
         vm.stopPrank();
     }

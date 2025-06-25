@@ -37,9 +37,14 @@ contract DeployScript is Script {
         MasterChef masterChef = new MasterChef(sushi, deployer, sushiPerBlock, startBlock);
         console.log("MasterChef deployed at:", address(masterChef));
 
-        // Transfer ownership of SushiToken to MasterChef
+        // 正确的架构设置：
+        // 1. SushiToken由MasterChef控制（用于自动mint挖矿奖励）
         sushi.transferOwnership(address(masterChef));
         console.log("SushiToken ownership transferred to MasterChef");
+        
+        // 2. MasterChef由deployer控制（生产环境中应该转移给DAO）
+        // masterChef.transferOwnership(address(dao)); // 部署DAO后执行
+        console.log("MasterChef owned by deployer (transfer to DAO later)");
 
         // Deploy test tokens
         ERC20Mock tokenA = new ERC20Mock("Token A", "TKNA", 1000000 * 10**18);

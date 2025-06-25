@@ -461,14 +461,14 @@ contract ComprehensiveTest is Test {
         uint256 newSushiPerBlock = 2 * 10**18;
         
         vm.startPrank(address(this)); // Contract deployer is owner
-        masterChef.updateSushiPerBlock(newSushiPerBlock);
+        masterChef.updateSushiPerBlock(newSushiPerBlock, true);
         assertEq(masterChef.sushiPerBlock(), newSushiPerBlock);
         vm.stopPrank();
         
         // Test unauthorized access
         vm.startPrank(alice);
         vm.expectRevert();
-        masterChef.updateSushiPerBlock(newSushiPerBlock);
+        masterChef.updateSushiPerBlock(newSushiPerBlock, true);
         vm.stopPrank();
     }
 

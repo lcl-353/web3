@@ -37,8 +37,11 @@ contract SimpleDAOTest is Test {
         // Setup initial state
         _setupInitialTokens();
         
-        // Transfer ownership to DAO
-        sushiToken.transferOwnership(address(dao));
+        // 正确的架构设置：
+        // 1. SushiToken由MasterChef控制（用于自动mint挖矿奖励）
+        sushiToken.transferOwnership(address(masterChef));
+        
+        // 2. MasterChef由DAO控制（治理参数调整）
         masterChef.transferOwnership(address(dao));
     }
 
@@ -68,25 +71,24 @@ contract SimpleDAOTest is Test {
         assertEq(dao.PROPOSAL_THRESHOLD(), 1000 * 10**18);
         assertEq(dao.QUORUM_PERCENTAGE(), 4);
         
-        // Check ownership transfer
-        assertEq(sushiToken.owner(), address(dao));
-        assertEq(masterChef.owner(), address(dao));
+        // Check ownership transfer (correct architecture)
+        assertEq(sushiToken.owner(), address(masterChef), "SushiToken should be owned by MasterChef");
+        assertEq(masterChef.owner(), address(dao), "MasterChef should be owned by DAO");
     }
 
-    /// @notice Test proposal creation
+    /// @notice Test proposal creation (控制MasterChef参数)
     function testProposalCreation() public {
-        // Create a proposal to mint more tokens
+        // Create a proposal to update MasterChef emission rate
         bytes memory data = abi.encodeWithSignature(
-            "mint(address,uint256)",
-            alice,
-            1000 * 10**18
+            "updateSushiPerBlock(uint256)",
+            2 * 10**18  // Change to 2 SUSHI per block
         );
         
-        string memory description = "Mint 1000 SUSHI tokens to Alice";
+        string memory description = "Update SUSHI emission to 2 tokens per block";
 
         vm.prank(alice); // Alice has enough tokens for proposal threshold
         uint256 proposalId = dao.propose(
-            address(sushiToken),
+            address(masterChef),
             0,
             data,
             description
@@ -109,7 +111,7 @@ contract SimpleDAOTest is Test {
         
         vm.prank(noVotingPower);
         vm.expectRevert("SimpleDAO: insufficient voting power");
-        dao.propose(address(sushiToken), 0, data, "Test proposal");
+        dao.propose(address(masterChef), 0, data, "Test proposal");
     }
 
     /// @notice Test voting on proposals
@@ -200,13 +202,14 @@ contract SimpleDAOTest is Test {
         // Fast forward past execution delay
         vm.warp(block.timestamp + dao.EXECUTION_DELAY() + 1);
         
-        uint256 aliceBalanceBefore = sushiToken.balanceOf(alice);
+        uint256 sushiPerBlockBefore = masterChef.sushiPerBlock();
         
         // Execute proposal
         dao.execute(proposalId);
         
         assertEq(uint256(dao.state(proposalId)), uint256(SimpleDAO.ProposalState.Executed));
-        assertEq(sushiToken.balanceOf(alice), aliceBalanceBefore + 1000 * 10**18);
+        assertEq(masterChef.sushiPerBlock(), 2 * 10**18, "Emission rate should be updated to 2 SUSHI per block");
+        assertTrue(masterChef.sushiPerBlock() != sushiPerBlockBefore, "Emission rate should have changed");
     }
 
     /// @notice Test quorum requirements
@@ -311,9 +314,9 @@ contract SimpleDAOTest is Test {
         ) = dao.getProposal(proposalId);
         
         assertEq(proposer, alice);
-        assertEq(target, address(sushiToken));
+        assertEq(target, address(masterChef));
         assertEq(value, 0);
-        assertEq(description, "Mint 1000 SUSHI tokens to Alice");
+        assertEq(description, "Update SUSHI emission to 2 tokens per block");
         assertEq(forVotes, 0); // No votes yet
         assertEq(againstVotes, 0);
         assertEq(abstainVotes, 0);
@@ -363,17 +366,16 @@ contract SimpleDAOTest is Test {
         assertEq(uint256(dao.state(proposalId)), uint256(SimpleDAO.ProposalState.Expired));
     }
 
-    /// @notice Helper function to create a test proposal
+    /// @notice Helper function to create a test proposal (更新MasterChef参数)
     function _createTestProposal() internal returns (uint256) {
         bytes memory data = abi.encodeWithSignature(
-            "mint(address,uint256)",
-            alice,
-            1000 * 10**18
+            "updateSushiPerBlock(uint256)",
+            2 * 10**18  // Update to 2 SUSHI per block
         );
         
-        string memory description = "Mint 1000 SUSHI tokens to Alice";
+        string memory description = "Update SUSHI emission to 2 tokens per block";
 
         vm.prank(alice);
-        return dao.propose(address(sushiToken), 0, data, description);
+        return dao.propose(address(masterChef), 0, data, description);
     }
 } 
