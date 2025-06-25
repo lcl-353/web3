@@ -20,7 +20,7 @@ anvil
 forge build --via-ir
 
 # 部署所有合约到本地网络
-forge script script/DeployToFoundry.s.sol --rpc-url http://localhost:8545 --broadcast
+forge script script/DeployToFoundry.s.sol --rpc-url http://localhost:8545 --broadcast --via-ir
 ```
 
 ## 📋 部署内容

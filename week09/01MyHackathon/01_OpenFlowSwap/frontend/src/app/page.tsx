@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { WalletConnector } from "../components/WalletConnector";
+import { LiquidityManager } from "../components/LiquidityManager";
 
 export default function Home() {
   return (
@@ -46,20 +47,25 @@ export default function Home() {
           <div className="flex gap-4 items-center flex-col sm:flex-row">
             <a
               className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-              href="#"
+              href="#liquidity"
               rel="noopener noreferrer"
             >
-              开始交易
+              管理流动性
             </a>
             <a
               className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-              href="#"
+              href="#features"
               rel="noopener noreferrer"
             >
               了解更多
             </a>
           </div>
         </main>
+        
+        {/* 流动性管理部分 */}
+        <section id="liquidity" className="row-start-2 w-full max-w-4xl mx-auto mt-16">
+          <LiquidityManager />
+        </section>
         <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4"
